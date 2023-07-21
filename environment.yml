@@ -1,0 +1,23 @@
+name: pytask-vscode
+
+channels:
+  - conda-forge
+  - nodefaults
+
+dependencies:
+  - python
+  - pip
+  - setuptools_scm
+  - toml
+
+  # Package dependencies
+  - pytask >=0.2
+  - pytask-parallel >=0.2
+
+  # Misc
+  - black
+  - jupyterlab
+  - pre-commit
+  - pytest-cov
+  - pytest-xdist
+  - tox-conda
