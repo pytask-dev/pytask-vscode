@@ -9,7 +9,6 @@ def pytask_execute_task_log_end(session: pytask.Session, report: pytask.Executio
     if not session.config["dry_run"]:
         attrs = {"name" : report.task.short_name, "path" : str(report.task.path), "report" : str(report.outcome)}
         address = ('localhost', 6000)
-        pytask.console.print(attrs)
         conn = Client(address, authkey=b'secret password')
         conn.send(json.dumps(attrs))
         conn.close()
