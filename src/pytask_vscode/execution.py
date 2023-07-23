@@ -7,7 +7,7 @@ from multiprocessing.connection import Client
 def pytask_execute_task_log_end(session: pytask.Session, report: pytask.ExecutionReport) -> None:
     
     if not session.config["dry_run"]:
-        attrs = {"name" : report.task.short_name, "path" : str(report.task.path), "report" : str(report.outcome)}
+        attrs = {"type" : "task" ,"name" : report.task.short_name, "path" : str(report.task.path), "report" : str(report.outcome)}
         address = ('localhost', 6000)
         conn = Client(address, authkey=b'secret password')
         conn.send(json.dumps(attrs))
