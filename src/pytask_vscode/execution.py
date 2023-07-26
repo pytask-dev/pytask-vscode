@@ -1,7 +1,6 @@
 import pytask
 import json
 import requests
-from multiprocessing.connection import Client
 
 @pytask.hookimpl(tryfirst=True)
 def pytask_collect_log(session: pytask.Session, reports: list[pytask.CollectionReport], tasks: list[pytask.Task]) -> None:
