@@ -1,8 +1,6 @@
 # pytask-vscode
 
-  
-[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/mj023/pytask-vscode/main.svg)](https://results.pre-commit.ci/latest/github/mj023/pytask-vscode/main)
-[![image](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+This is a plugin for Pytask. It is needed to use the Pytask VS Code Extension.
 
 
 ## Installation

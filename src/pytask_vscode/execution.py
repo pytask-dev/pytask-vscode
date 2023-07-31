@@ -7,7 +7,9 @@ def pytask_collect_log(session: pytask.Session, reports: list[pytask.CollectionR
         try:    
             if session.config['command'] == 'collect':
                 result = [{'name' : task.short_name, 'path' : str(task.path)} for task in tasks]
-                res = requests.post('http://localhost:6000/pytask', json={"exitcode" : session.exit_code, "tasks": result}, timeout=0.1)
+                res = requests.post('http://localhost:6000/pytask', json={"exitcode" : session.exit_code, "tasks": result}, timeout=0.0001)
+        except requests.exceptions.ReadTimeout: 
+            pass
         except Exception as e:
             pytask.console.print_exception()
 
@@ -17,6 +19,8 @@ def pytask_execute_task_log_end(session: pytask.Session, report: pytask.Executio
     
     try:    
         result = {'type': 'task', 'name' : report.task.short_name, 'outcome' : str(report.outcome)}
-        res = requests.post('http://localhost:6000/pytask', json=result)
+        res = requests.post('http://localhost:6000/pytask', json=result, timeout=0.00001)
+    except requests.exceptions.ReadTimeout: 
+        pass
     except Exception as e:
         pytask.console.print_exception()
