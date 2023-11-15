@@ -22,7 +22,7 @@ def pytask_execute_task_log_end(session: pytask.Session, report: pytask.Executio
     try:
         if report.outcome == pytask.TaskOutcome.FAIL:
             with pytask.console.capture() as capture:
-                pytask.console.print(pytask.render_exc_info(report.exc_info[0], report.exc_info[1], report.exc_info[2]))
+                pytask.console.print(pytask.Traceback(report.exc_info))
             s = capture.get()
             result = {'type': 'task', 'name' : report.task.name.split('/')[-1], 'outcome' : str(report.outcome), 'exc_info' : s}
         else:
@@ -30,5 +30,5 @@ def pytask_execute_task_log_end(session: pytask.Session, report: pytask.Executio
         res = requests.post('http://localhost:6000/pytask', json=result, timeout=0.00001)
     except requests.exceptions.ReadTimeout: 
         pass
-    except Exception as e:
+    except Exception as e:#
         pass
