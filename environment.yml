@@ -11,8 +11,9 @@ dependencies:
   - toml
 
   # Package dependencies
-  - pytask >=0.2
+  - pytask >=0.4.1
   - pytask-parallel >=0.2
+  - requests
 
   # Misc
   - black
