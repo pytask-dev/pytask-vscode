@@ -8,8 +8,12 @@ import io
 def pytask_collect_log(session: pytask.Session, reports: list[pytask.CollectionReport], tasks: list[pytask.PTask]) -> None:
         try:    
             if session.config['command'] == 'collect':
+                exitcode = 0
+                for report in reports:
+                    if report.outcome == pytask.CollectionOutcome.FAIL:
+                        exitcode = 3
                 result = [{'name' : task.name.split('/')[-1], 'path' : str(task.path)} if isinstance(task,pytask.PTaskWithPath) else {'name' : task.name, 'path' : ''} for task in tasks]
-                res = requests.post('http://localhost:6000/pytask', json={"exitcode" : session.exit_code, "tasks": result}, timeout=0.0001)
+                res = requests.post('http://localhost:6000/pytask', json={"exitcode" : exitcode, "tasks": result}, timeout=0.0001)
         except requests.exceptions.ReadTimeout: 
             pass
         except Exception as e:
