@@ -45,9 +45,16 @@ extend-ignore = [
     "D417",
     # Others.
     "D404",  # Do not start module docstring with "This".
+    "D100",  # Missing module docstring.
+    "D103",  # Missing function docstring.
     "RET504",  # unnecessary variable assignment before return.
+    "ARG001",  # Unused function argument.
+    "BLE001",  # Blind exception catch.
+    "S110",  # try-except-pass used to keep logging best-effort.
+    "F841",  # Assigned but unused local variable.
     "S101",  # raise errors for asserts.
     "B905",  # strict parameter for zip that was implemented in py310.
+    "TC002",  # Keep third-party imports at module level.
     "I",  # ignore isort
     "ANN101",  # type annotating self
     "ANN102",  # type annotating cls
