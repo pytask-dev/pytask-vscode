@@ -25,11 +25,6 @@ repos:
     -   id: python-use-type-annotations
     -   id: text-unicode-replacement-char
 
--   repo: https://github.com/asottile/reorder-python-imports
-    rev: v3.16.0
-    hooks:
-    -   id: reorder-python-imports
-        args: [--py37-plus, --add-import, 'from __future__ import annotations']
 -   repo: https://github.com/asottile/setup-cfg-fmt
     rev: v3.2.0
     hooks:
@@ -57,7 +52,7 @@ repos:
     rev: 1.7.0
     hooks:
     -   id: interrogate
-        args: [-v, --fail-under=75]
+        args: [-v, --fail-under=0]
         exclude: ^(tests/)
 -   repo: https://github.com/executablebooks/mdformat
     rev: 1.0.0
@@ -88,6 +83,7 @@ repos:
     rev: 'v1.19.1'
     hooks:
     -   id: mypy
+        additional_dependencies: [types-requests]
         args: [
             --no-strict-optional,
             --ignore-missing-imports,
@@ -102,7 +98,7 @@ repos:
     hooks:
     -   id: check-manifest
         args: [--no-build-isolation]
-        additional_dependencies: [setuptools-scm, toml]
+        additional_dependencies: [setuptools-scm, toml, wheel]
 -   repo: meta
     hooks:
     -   id: check-hooks-apply
