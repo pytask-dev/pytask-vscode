@@ -33,6 +33,7 @@ target-version = "py311"
 select = ["ALL"]
 fix = true
 extend-ignore = [
+    "CPY001", # Copyright headers are not required.
     # Numpy docstyle
     "D107",
     "D203",
